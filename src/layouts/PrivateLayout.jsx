@@ -6,7 +6,8 @@ import SlideOver from "../components/SlideOver";
 import { BiLogOut } from "react-icons/bi";
 
 const PrivateLayout = () => {
-  const { autenticado, loading } = useContext(AutenticacionContext);
+  const { autenticado, loading, setSaveToken } =
+    useContext(AutenticacionContext);
 
   const navigate = useNavigate();
 
@@ -16,6 +17,7 @@ const PrivateLayout = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+    setSaveToken(false);
     return navigate("/login");
   };
 
