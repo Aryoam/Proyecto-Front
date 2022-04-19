@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import AutenticacionContext from "../context/autenticacionContext";
 import PrivateLayout from "./layouts/PrivateLayout";
 import Home from "./components/Home";
+import Pacientes from "./components/Pacientes";
 import "../styles/app.css";
 
 function App() {
@@ -65,6 +66,7 @@ function App() {
 
           <Route path="/" element={<PrivateLayout />}>
             <Route index element={<Home />} />
+            <Route path="/pacientes" element={<Pacientes />} />
           </Route>
         </Routes>
       </AutenticacionContext.Provider>

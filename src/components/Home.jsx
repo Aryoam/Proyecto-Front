@@ -3,7 +3,7 @@ import AutenticacionContext from "../../context/autenticacionContext";
 
 const Home = () => {
   const { autenticado } = useContext(AutenticacionContext);
-  return <div>jhfbvjhsbdfjvhbvhbvdfku</div>;
+  return <div>Perfiles de Enfermeros</div>;
 };
 
 export default Home;

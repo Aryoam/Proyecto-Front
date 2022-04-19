@@ -14,11 +14,11 @@ const SlideOver = () => {
 
       <Offcanvas show={show} onHide={handleClose} placement="end">
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+          <Offcanvas.Title>Menu de Opciones</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          Some text as placeholder. In real life you can have the elements you
-          have chosen. Like, text, images, lists, etc.
+          Este es el cuerpo del menu para los telefonos moviles y ya no se que
+          mas escribir
         </Offcanvas.Body>
       </Offcanvas>
     </>
