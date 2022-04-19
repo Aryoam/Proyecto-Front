@@ -16,7 +16,6 @@ const Login = () => {
 
   const redireccion = () => {
     navigateTo("/");
-    console.log("redirección");
   };
 
   if (saveToken) redireccion();

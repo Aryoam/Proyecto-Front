@@ -19,7 +19,6 @@ function App() {
 
       if (!tokenAlmacenado) {
         setLoading(false);
-        console.log("SIN TOKEN");
         return;
       }
 
