@@ -12,7 +12,6 @@ function App() {
   const [autenticado, setAutenticado] = useState({});
   const [loading, setLoading] = useState(true);
   const [saveToken, setSaveToken] = useState(false);
-  console.log(autenticado);
 
   useEffect(() => {
     const autenticarEnfermero = async () => {
