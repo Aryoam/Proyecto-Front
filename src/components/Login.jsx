@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { LockClosedIcon } from "@heroicons/react/solid";
-import AutenticacionContext from "../../context/autenticacionContext";
+import useAutenticado from "../hooks/useAutenticado";
 import Logo from "../img/file.png";
 import Error from "./Error";
 
@@ -11,14 +11,11 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
 
-  const { setAutenticado, loading, setLoading, setSaveToken, saveToken } =
-    useContext(AutenticacionContext);
+  const { setAutenticado, autenticado, loading } = useAutenticado();
 
-  const redireccion = () => {
-    navigateTo("/");
-  };
-
-  if (saveToken) redireccion();
+  // const redireccion = () => {
+  //   navigateTo("/");
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,7 +26,7 @@ const Login = () => {
 
     try {
       const consultarApi = async () => {
-        const url = "http://localhost:4000/api/administradores/login";
+        const url = "http://localhost:4000/api/administrador/login";
         const requestOptions = {
           method: "POST",
           headers: {
@@ -45,8 +42,6 @@ const Login = () => {
         }
         localStorage.setItem("token", resultado.token);
         setAutenticado(resultado);
-        setSaveToken(true);
-        redireccion();
       };
 
       consultarApi();

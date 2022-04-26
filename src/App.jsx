@@ -2,73 +2,35 @@ import { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LoginLayout from "./layouts/LoginLayout";
 import Login from "./components/Login";
-import AutenticacionContext from "../context/autenticacionContext";
+import { AutenticadoProvider } from "./context/autenticacionContext";
+import { EnfermeroProvider } from "./context/enfermeroContext";
+import useAutenticado from "./hooks/useAutenticado";
 import PrivateLayout from "./layouts/PrivateLayout";
-import Home from "./components/Home";
+import Administrador from "./components/Administrador";
+import Enfermero from "./components/Enfermero";
 import Pacientes from "./components/Pacientes";
-import "../styles/app.css";
+import { PacienteProvider } from "./context/pacienteContext";
 
 function App() {
-  const [autenticado, setAutenticado] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [saveToken, setSaveToken] = useState(false);
-
-  useEffect(() => {
-    const autenticarEnfermero = async () => {
-      const tokenAlmacenado = localStorage.getItem("token");
-
-      if (!tokenAlmacenado) {
-        setLoading(false);
-        return;
-      }
-
-      try {
-        const consultarApi = async () => {
-          const url = "http://localhost:4000/api/administradores/home";
-          const requestOptions = {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${tokenAlmacenado}`,
-            },
-          };
-
-          const respuesta = await fetch(url, requestOptions);
-          const resultado = await respuesta.json();
-
-          setAutenticado(resultado);
-          setLoading(false);
-          setSaveToken(true);
-        };
-        consultarApi();
-      } catch (error) {}
-    };
-
-    autenticarEnfermero();
-  }, []);
-
   return (
     <BrowserRouter>
-      <AutenticacionContext.Provider
-        value={{
-          autenticado,
-          setAutenticado,
-          loading,
-          setLoading,
-          saveToken,
-          setSaveToken,
-        }}
-      >
-        <Routes>
-          <Route path="/login" element={<LoginLayout />}>
-            <Route index element={<Login />} />
-          </Route>
+      <AutenticadoProvider>
+        <PacienteProvider>
+          <EnfermeroProvider>
+            <Routes>
+              <Route path="/login" element={<LoginLayout />}>
+                <Route index element={<Login />} />
+              </Route>
 
-          <Route path="/" element={<PrivateLayout />}>
-            <Route index element={<Home />} />
-            <Route path="/pacientes" element={<Pacientes />} />
-          </Route>
-        </Routes>
-      </AutenticacionContext.Provider>
+              <Route path="/" element={<PrivateLayout />}>
+                <Route index element={<Administrador />} />
+                <Route path="/enfermero" element={<Enfermero />} />
+                <Route path="/pacientes" element={<Pacientes />} />
+              </Route>
+            </Routes>
+          </EnfermeroProvider>
+        </PacienteProvider>
+      </AutenticadoProvider>
     </BrowserRouter>
   );
 }
