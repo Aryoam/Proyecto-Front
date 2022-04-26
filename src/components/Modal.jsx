@@ -28,7 +28,7 @@ export default function Modal({ data }) {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Dialog.Overlay className="fixed inset-0" />
+              <Dialog.Overlay className="fixed inset-0 bg-black/[0.7]" />
             </Transition.Child>
 
             {/* This element is to trick the browser into centering the modal contents. */}
@@ -47,9 +47,9 @@ export default function Modal({ data }) {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block w-full max-w-6xl p-6 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl alturaModal overflow-scroll">
-                <div className="sm:grid sm:grid-cols-[1fr_2fr]">
-                  <div className="relative mt-24 drop-shadow-[-5px_0px_10px_rgba(178,228,255,.4)] bg-white rounded-xl sm:w-96">
+              <div className="inline-block w-full max-w-6xl  p-2 sm:p-6 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl alturaModal overflow-scroll">
+                <div className="sm:grid sm:grid-cols-[1fr_2fr] gap-2.5">
+                  <div className="relative mt-24 shadowPersonalizado bg-white rounded-xl sm:w-96">
                     <img
                       src={data.foto}
                       alt="Foto del enfermero"
@@ -71,13 +71,16 @@ export default function Modal({ data }) {
                     </div>
                   </div>
                   <div>
-                    {/* <SelectEnfermero data={data} /> */}
-                    <TablaInfoPacienteModal data={data} />
+                    {data.nombre ? (
+                      <TablaInfoPacienteModal data={data} />
+                    ) : (
+                      <h1>holsa</h1>
+                    )}
                   </div>
                 </div>
 
                 <div className="mt-4">
-                  <OpcionesPaciente />
+                  <OpcionesPaciente data={data} />
                   <button
                     type="button"
                     className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"

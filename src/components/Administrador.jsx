@@ -13,7 +13,7 @@ const Administrador = () => {
   return (
     <>
       {paciente ? (
-        <div className="p-12 containerLayout sm:grid sm:grid-cols-[1fr_2fr] grid-admin xl:px-20">
+        <div className=" p-3 sm:p-12 containerLayout sm:grid sm:grid-cols-[1fr_2fr] grid-admin xl:px-20">
           <div>
             <div className="relative mt-24 drop-shadow-[-5px_0px_10px_rgba(178,228,255,.4)] bg-white rounded-xl sm:w-96">
               <img
@@ -23,7 +23,6 @@ const Administrador = () => {
               />
               <div className="pt-44 p-5">
                 <div className="flex items-center mb-3 justify-center">
-                  {/* <BiUser className="mr-2 text-2xl" /> */}
                   <p className="m-0 text-xl">{autenticado.nombre}</p>
                 </div>
                 <div className="flex items-center mb-3">
@@ -113,22 +112,3 @@ const Administrador = () => {
 };
 
 export default Administrador;
-
-// try {
-//   const fetchData = async () => {
-//     const respuestaCategorias = await fetch(`${API_URL}categorias`);
-//     const resultadoCategorias = await respuestaCategorias.json();
-//     await setCategorias(resultadoCategorias.data);
-
-//     const respuestaNecesidades = await fetch(`${API_URL}necesidades`);
-//     const resultadoNecesidades = await respuestaNecesidades.json();
-//     await setNecesidades(resultadoNecesidades.data);
-
-//     const respuestaArticulos = await fetch(`${API_URL}articulos`);
-//     const resultadoArticulos = await respuestaArticulos.json();
-//     await setArticulos(resultadoArticulos.data);
-//   };
-//   fetchData();
-// } catch (error) {
-//   console.log(error);
-// }

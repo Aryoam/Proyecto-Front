@@ -1,30 +1,23 @@
 import { useState } from "react";
 import { Tab } from "@headlessui/react";
-import TablaInfoPacienteModal from "./TablaInfoPacienteModal";
+import TablaConstantesPaciente from "./TablaConstantesPaciente";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function OpcionesPaciente() {
+export default function OpcionesPaciente({ data }) {
   let [categories] = useState({
-    Recent: [
+    Constantes: [
       {
         id: 1,
-        title: <TablaInfoPacienteModal />,
+        title: <TablaConstantesPaciente data={data} />,
         date: "5h ago",
         commentCount: 5,
         shareCount: 2,
       },
-      {
-        id: 2,
-        title: "So you've bought coffee... now what?",
-        date: "2h ago",
-        commentCount: 3,
-        shareCount: 2,
-      },
     ],
-    Popular: [
+    Historial: [
       {
         id: 1,
         title: "Is tech making coffee better or worse?",
@@ -40,7 +33,7 @@ export default function OpcionesPaciente() {
         shareCount: 12,
       },
     ],
-    Trending: [
+    Estadisticas: [
       {
         id: 1,
         title: "Ask Me Anything: 10 answers to your questions about coffee",
@@ -59,9 +52,9 @@ export default function OpcionesPaciente() {
   });
 
   return (
-    <div className="w-full px-2 py-16 sm:px-0">
+    <div className="w-full px-2 py-5 sm:px-0">
       <Tab.Group>
-        <Tab.List className="flex p-1 space-x-1 bg-blue-900/20 rounded-xl">
+        <Tab.List className="flex p-1 space-x-1 bg-sky-400 rounded-xl">
           {Object.keys(categories).map((category) => (
             <Tab
               key={category}
@@ -71,7 +64,7 @@ export default function OpcionesPaciente() {
                   "focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-400 ring-white ring-opacity-60",
                   selected
                     ? "bg-white shadow"
-                    : "text-blue-100 hover:bg-white/[0.12] hover:text-white"
+                    : "text-blue-50 hover:bg-white/[0.12] hover:text-white"
                 )
               }
             >
@@ -84,7 +77,7 @@ export default function OpcionesPaciente() {
             <Tab.Panel
               key={idx}
               className={classNames(
-                "bg-white rounded-xl p-3",
+                "bg-white rounded-xl py-3",
                 "focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-400 ring-white ring-opacity-60"
               )}
             >

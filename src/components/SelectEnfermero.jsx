@@ -7,6 +7,8 @@ export default function SelectEnfermero({ data }) {
   const { enfermero } = useEnfermero();
   const [selected, setSelected] = useState(enfermero[0]);
 
+  console.log(data);
+
   useEffect(() => {
     const pacientesAPI = async () => {
       const tokenAlmacenado = localStorage.getItem("token");
@@ -25,12 +27,8 @@ export default function SelectEnfermero({ data }) {
               body: JSON.stringify({ enfermero: selected._id }),
             };
 
-            console.log(selected._id);
-
             const respuesta = await fetch(url, requestOptions);
             const resultado = await respuesta.json();
-
-            console.log(resultado);
           };
 
           consultarApi();
@@ -43,14 +41,15 @@ export default function SelectEnfermero({ data }) {
     pacientesAPI();
   }, [selected]);
 
+  // bg-gradient-to-r from-cyan-100 to-sky-200
   return (
     <div className="w-72 relative">
       <Listbox value={selected} onChange={setSelected}>
         <div className="relative mt-1">
-          <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left bg-gradient-to-r from-cyan-400 to-sky-500 rounded-lg shadow-md cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm">
-            <span className="block truncate text-white">{selected.nombre}</span>
+          <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left  bd-white rounded-lg shadow-md cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm">
+            <span className="block truncate text-black">{selected.nombre}</span>
             <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-              <SelectorIcon className="w-5 h-5 text-white" aria-hidden="true" />
+              <SelectorIcon className="w-5 h-5 text-black" aria-hidden="true" />
             </span>
           </Listbox.Button>
           <Transition
@@ -65,7 +64,7 @@ export default function SelectEnfermero({ data }) {
                   key={personIdx}
                   className={({ active }) =>
                     `cursor-default select-none relative py-2 pl-10 pr-4 ${
-                      active ? "text-amber-900 bg-amber-100" : "text-gray-900"
+                      active ? "text-gray-700 bg-cyan-100" : "text-gray-900"
                     }`
                   }
                   value={person}
@@ -80,7 +79,7 @@ export default function SelectEnfermero({ data }) {
                         {person.nombre}
                       </span>
                       {selected ? (
-                        <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600">
+                        <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-sky-600">
                           <CheckIcon className="w-5 h-5" aria-hidden="true" />
                         </span>
                       ) : null}
