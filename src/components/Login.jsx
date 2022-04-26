@@ -11,11 +11,11 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
 
-  const { setAutenticado, autenticado, loading } = useAutenticado();
+  const { setAutenticado, autenticado, loading, setLoading } = useAutenticado();
 
-  // const redireccion = () => {
-  //   navigateTo("/");
-  // };
+  const redireccion = () => {
+    navigateTo("/");
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,6 +42,7 @@ const Login = () => {
         }
         localStorage.setItem("token", resultado.token);
         setAutenticado(resultado);
+        redireccion();
       };
 
       consultarApi();
