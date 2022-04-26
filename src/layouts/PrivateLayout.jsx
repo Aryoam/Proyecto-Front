@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import useAutenticado from "../hooks/useAutenticado";
 import Logo from "../img/file.png";
-// import SlideOver from "../components/SlideOver";
 import { BiLogOut } from "react-icons/bi";
 import { BsFillPeopleFill } from "react-icons/bs";
 
@@ -28,7 +27,6 @@ const PrivateLayout = () => {
         <div className="bg-gradient-to-r from-cyan-100 to-sky-300">
           <header className="shadow-md p-2 flex justify-between w-full items-center color-secundario md:hidden bg-white mb-2 ">
             <img src={Logo} alt="Logo" className="w-10" />
-            {/* <SlideOver placement={"end"} name={"end"} /> */}
           </header>
           <div className="md:grid gap-x-2.5 grid-cols-[130px_minmax(900px,_1fr)]  h-screen">
             <div className="md:flex md:flex-col md:justify-between hidden bg-white rounded-r-3xl drop-shadow-[-5px_0px_20px_rgba(178,228,255,1)] p-3 ">
