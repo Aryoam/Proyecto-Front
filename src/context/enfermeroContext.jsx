@@ -11,8 +11,6 @@ const EnfermeroProvider = ({ children }) => {
     const autenticarEnfermero = async () => {
       const tokenAlmacenado = localStorage.getItem("token");
 
-      if (!tokenAlmacenado) return setLoading(false);
-
       try {
         const consultarApi = async () => {
           const url = "http://localhost:4000/api/enfermero/lista";
