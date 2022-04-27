@@ -60,7 +60,7 @@ const Administrador = () => {
                   ${
                     checked ? "bg-sky-900 bg-opacity-75 text-white" : "bg-white"
                   }
-                    relative rounded-lg shadow-md px-5 py-4 cursor-pointer flex focus:outline-none`
+                    relative rounded-lg shadow-md px-5 py-4 cursor-pointer flex `
                         }
                       >
                         {({ active, checked }) => (

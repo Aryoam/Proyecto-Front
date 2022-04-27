@@ -61,7 +61,7 @@ export default function OpcionesPaciente({ data }) {
               className={({ selected }) =>
                 classNames(
                   "w-full py-2.5 text-sm leading-5 font-medium text-blue-700 rounded-lg",
-                  "focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-400 ring-white ring-opacity-60",
+                  "focus:outline-none  ring-offset-2 ring-offset-blue-400 ring-white ring-opacity-60",
                   selected
                     ? "bg-white shadow"
                     : "text-blue-50 hover:bg-white/[0.12] hover:text-white"
@@ -78,7 +78,7 @@ export default function OpcionesPaciente({ data }) {
               key={idx}
               className={classNames(
                 "bg-white rounded-xl py-3",
-                "focus:outline-none focus:ring-2 ring-offset-2 ring-offset-blue-400 ring-white ring-opacity-60"
+                "focus:outline-none  ring-offset-2 ring-offset-blue-400 ring-white ring-opacity-60"
               )}
             >
               <ul>
