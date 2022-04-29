@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Select from "./Select";
+import Spinner from "./Spinner";
 
 const TablaHistoricoPaciente = ({ data }) => {
   const [obHigiene, setObHigiene] = useState({ opcion: "No" });
@@ -33,20 +34,23 @@ const TablaHistoricoPaciente = ({ data }) => {
 
   return (
     <>
-      <input
-        type="date"
-        min={data.fechaEntrada}
-        max={fechaMax}
-        value={fecha}
-        onChange={(e) => setFecha(e.target.value)}
-      />
       {!historial ? (
-        <h1>hola</h1>
+        <Spinner />
       ) : (
         <div className="mt-5 md:mt-0 md:col-span-2">
           <form>
             <div className="shadowPersonalizado overflow-hidden sm:rounded-lg">
               <div className="px-4 py-5 bg-white sm:p-6">
+                <div className="containerFechaHistorico">
+                  <input
+                    type="date"
+                    min={data.fechaEntrada}
+                    max={fechaMax}
+                    value={fecha}
+                    className="relative p-2.5 text-left bg-white rounded-lg shadow-md cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm shadow-sm sm:text-sm border-[1px] border-gray-200 rounded-md p-2.5"
+                    onChange={(e) => setFecha(e.target.value)}
+                  />
+                </div>
                 <div className="grid grid-cols-6 gap-6">
                   <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                     <label className="block text-sm font-medium text-gray-700">

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Tab } from "@headlessui/react";
 import TablaConstantesPaciente from "./TablaConstantesPaciente";
 import TablaHistoricoPaciente from "./TablaHistoricoPaciente";
+import Grafico from "./Grafico";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -21,7 +22,7 @@ export default function OpcionesPaciente({ data }) {
     ],
     Estadisticas: [
       {
-        componente: "Grafico con estadisticas del paciente",
+        componente: <Grafico />,
       },
     ],
   });
