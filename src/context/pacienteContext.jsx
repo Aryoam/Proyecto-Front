@@ -22,6 +22,7 @@ const PacienteProvider = ({ children }) => {
           const respuesta = await fetch(url);
           const resultado = await respuesta.json();
           setPaciente(resultado);
+          console.log(resultado);
         };
 
         consultarApi();

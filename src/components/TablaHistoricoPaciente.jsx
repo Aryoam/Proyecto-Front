@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import Select from "./Select";
 import Spinner from "./Spinner";
+import Select from "./Select";
 
 const TablaHistoricoPaciente = ({ data }) => {
   const [obHigiene, setObHigiene] = useState({ opcion: "No" });
@@ -22,6 +22,7 @@ const TablaHistoricoPaciente = ({ data }) => {
         const respuesta = await fetch(url);
         const resultado = await respuesta.json();
         const array = resultado.historial;
+        console.log(resultado);
         const historia = array.find((historias) => historias.fecha === fecha);
 
         historia ? setHistorial(historia) : setHistorial(null);
@@ -44,10 +45,10 @@ const TablaHistoricoPaciente = ({ data }) => {
                 <div className="containerFechaHistorico">
                   <input
                     type="date"
+                    className="relative p-2.5 text-left bg-white rounded-lg shadow-md cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm shadow-sm sm:text-sm border-[1px] border-gray-200 rounded-md p-2.5 "
                     min={data.fechaEntrada}
                     max={fechaMax}
                     value={fecha}
-                    className="relative p-2.5 text-left bg-white rounded-lg shadow-md cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm shadow-sm sm:text-sm border-[1px] border-gray-200 rounded-md p-2.5"
                     onChange={(e) => setFecha(e.target.value)}
                   />
                 </div>

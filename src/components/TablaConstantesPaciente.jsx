@@ -1,3 +1,4 @@
+import React from "react";
 import { useState, useEffect } from "react";
 import Select from "./Select";
 import toast, { Toaster } from "react-hot-toast";
@@ -21,6 +22,8 @@ const TablaConstantesPaciente = ({ data }) => {
   const [urgente, setUrgente] = useState("");
   const [nota, setNota] = useState("");
   const [existeHistorial, setExisteHistorial] = useState(false);
+
+  console.log(data);
 
   const fecha = new Date().toISOString().split("T")[0];
 
@@ -113,11 +116,8 @@ const TablaConstantesPaciente = ({ data }) => {
     if (!existeHistorial) {
       try {
         const consultarApi = async () => {
-          console.log("2");
-          // DEFINO UNA FUNCIÓN ASINCRONA
-          const url = `http://localhost:4000/api/paciente/agregar-historial`; // DEFINO LA URL DE LA PRIMERA LLAMADA
+          const url = `http://localhost:4000/api/paciente/agregar-historial`;
           const requestOptions = {
-            //DECLADO LOS HEADERS DE LA PRIMERA LLAMADA
             method: "PUT",
             headers: {
               "Content-Type": "application/json",
@@ -141,24 +141,24 @@ const TablaConstantesPaciente = ({ data }) => {
               nota,
             }),
           };
-          const respuesta = await fetch(url, requestOptions); // HAGO EL FETCH DE LA URL - ESPERARA A QUE DEVUELVA ALGO ANTES DE IR A LA SIGUIENTE LINEA
-          const resultado = await respuesta.json(); // CONVIERTO A JSON LA RESPUESTA - ESPERARA A QUE DEVUELVA ALGO ANTES DE IR A LA SIGUIENTE LINEA
+          const respuesta = await fetch(url, requestOptions);
+          const resultado = await respuesta.json();
+          console.log(data);
 
-          const urlPaciente = `http://localhost:4000/api/paciente/editar/${data._id}`; // DEFINO LA URL DE LA SEGUNDA LLAMADA
+          const urlPaciente = `http://localhost:4000/api/paciente/editar/${data._id}`;
           const parametros = {
-            //DECLADO LOS HEADERS DE LA SEGUNDA LLAMADA
             method: "PUT",
             headers: {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              historial: [...data.historial, resultado.msg._id], // RESULTADO.MSG._ID ES UN RESULTADO DE LA PRIMERA LLAMADA, TOMO ESOS DATOS Y LOS PASO AL BODY DE LA SEGUNDA LLAMADA
+              historial: [...data.historial, resultado.msg._id],
             }),
           };
 
-          const respuestaPaciente = await fetch(urlPaciente, parametros); // HAGO EL FETCH DE LA URL - ESPERARA A QUE DEVUELVA ALGO ANTES DE IR A LA SIGUIENTE LINEA
-          const resultadoPaciente = await respuestaPaciente.json(); // CONVIERTO A JSON LA RESPUESTA - ESPERARA A QUE DEVUELVA ALGO ANTES DE IR A LA SIGUIENTE LINEA
-          console.log(resultadoPaciente); // IMPRIMO EL RESULTADO DE LA SEGUNDA LLAMADA
+          const respuestaPaciente = await fetch(urlPaciente, parametros);
+          const resultadoPaciente = await respuestaPaciente.json();
+          console.log(resultadoPaciente);
         };
 
         consultarApi();
