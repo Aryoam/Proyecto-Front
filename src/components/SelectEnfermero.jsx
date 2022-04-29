@@ -7,8 +7,6 @@ export default function SelectEnfermero({ data }) {
   const { enfermero } = useEnfermero();
   const [selected, setSelected] = useState(enfermero[0]);
 
-  console.log(data);
-
   useEffect(() => {
     const pacientesAPI = async () => {
       const tokenAlmacenado = localStorage.getItem("token");

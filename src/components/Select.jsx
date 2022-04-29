@@ -2,9 +2,8 @@ import { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
 
-export default function Select({ opciones }) {
-  const [selected, setSelected] = useState(opciones[1]);
-
+const Select = ({ opciones, selected, setSelected }) => {
+  // const [selected, setSelected] = useState(opciones[1]);
   return (
     <div className="">
       <Listbox value={selected} onChange={setSelected}>
@@ -59,4 +58,6 @@ export default function Select({ opciones }) {
       </Listbox>
     </div>
   );
-}
+};
+
+export default Select;

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Tab } from "@headlessui/react";
 import TablaConstantesPaciente from "./TablaConstantesPaciente";
+import TablaHistoricoPaciente from "./TablaHistoricoPaciente";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -10,43 +11,17 @@ export default function OpcionesPaciente({ data }) {
   let [categories] = useState({
     Constantes: [
       {
-        id: 1,
-        title: <TablaConstantesPaciente data={data} />,
-        date: "5h ago",
-        commentCount: 5,
-        shareCount: 2,
+        componente: <TablaConstantesPaciente data={data} />,
       },
     ],
     Historial: [
       {
-        id: 1,
-        title: "Is tech making coffee better or worse?",
-        date: "Jan 7",
-        commentCount: 29,
-        shareCount: 16,
-      },
-      {
-        id: 2,
-        title: "The most innovative things happening in coffee",
-        date: "Mar 19",
-        commentCount: 24,
-        shareCount: 12,
+        componente: <TablaHistoricoPaciente data={data} />,
       },
     ],
     Estadisticas: [
       {
-        id: 1,
-        title: "Ask Me Anything: 10 answers to your questions about coffee",
-        date: "2d ago",
-        commentCount: 9,
-        shareCount: 5,
-      },
-      {
-        id: 2,
-        title: "The worst advice we've ever heard about coffee",
-        date: "4d ago",
-        commentCount: 1,
-        shareCount: 2,
+        componente: "Grafico con estadisticas del paciente",
       },
     ],
   });
@@ -82,8 +57,8 @@ export default function OpcionesPaciente({ data }) {
               )}
             >
               <ul>
-                {posts.map((post) => (
-                  <div>{post.title}</div>
+                {posts.map((post, idx) => (
+                  <div key={idx}>{post.componente}</div>
                 ))}
               </ul>
             </Tab.Panel>
