@@ -7,6 +7,7 @@ const TablaHistoricoPaciente = ({ data }) => {
   const [obWc, setObWc] = useState({ opcion: "No" });
   const [historial, setHistorial] = useState({});
   const [fecha, setFecha] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const fechaMax = new Date().toISOString().split("T")[0];
 
@@ -22,7 +23,7 @@ const TablaHistoricoPaciente = ({ data }) => {
         const respuesta = await fetch(url);
         const resultado = await respuesta.json();
         const array = resultado.historial;
-        console.log(resultado);
+
         const historia = array.find((historias) => historias.fecha === fecha);
 
         historia ? setHistorial(historia) : setHistorial(null);

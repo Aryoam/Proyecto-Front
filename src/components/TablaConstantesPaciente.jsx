@@ -23,8 +23,6 @@ const TablaConstantesPaciente = ({ data }) => {
   const [nota, setNota] = useState("");
   const [existeHistorial, setExisteHistorial] = useState(false);
 
-  console.log(data);
-
   const fecha = new Date().toISOString().split("T")[0];
 
   useEffect(() => {
@@ -143,22 +141,24 @@ const TablaConstantesPaciente = ({ data }) => {
           };
           const respuesta = await fetch(url, requestOptions);
           const resultado = await respuesta.json();
-          console.log(data);
+          toast.success("Actualizado", {
+            duration: 2000,
+          });
 
-          const urlPaciente = `http://localhost:4000/api/paciente/editar/${data._id}`;
-          const parametros = {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              historial: [...data.historial, resultado.msg._id],
-            }),
-          };
+          // const urlPaciente = `http://localhost:4000/api/paciente/editar/${data._id}`;
+          // const parametros = {
+          //   method: "PUT",
+          //   headers: {
+          //     "Content-Type": "application/json",
+          //   },
+          //   body: JSON.stringify({
+          //     historial: [...data.historial, resultado.msg._id],
+          //   }),
+          // };
 
-          const respuestaPaciente = await fetch(urlPaciente, parametros);
-          const resultadoPaciente = await respuestaPaciente.json();
-          console.log(resultadoPaciente);
+          // const respuestaPaciente = await fetch(urlPaciente, parametros);
+          // const resultadoPaciente = await respuestaPaciente.json();
+          // console.log(data);
         };
 
         consultarApi();
