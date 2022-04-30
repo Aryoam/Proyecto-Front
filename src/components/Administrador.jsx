@@ -10,9 +10,11 @@ const Administrador = () => {
   const { paciente } = usePaciente();
   const [selected, setSelected] = useState(paciente[0]);
 
+  console.log(paciente.length);
+
   return (
     <>
-      {paciente ? (
+      {paciente.length ? (
         <div className=" p-3 sm:p-12 containerLayout sm:grid sm:grid-cols-[1fr_2fr] grid-admin xl:px-20">
           <div>
             <div className="relative mt-24 drop-shadow-[-5px_0px_10px_rgba(178,228,255,.4)] bg-white rounded-xl sm:w-96">
