@@ -5,7 +5,7 @@ import Select from "./Select";
 const TablaHistoricoPaciente = ({ data }) => {
   const [obHigiene, setObHigiene] = useState({ opcion: "No" });
   const [obWc, setObWc] = useState({ opcion: "No" });
-  const [historial, setHistorial] = useState({});
+  const [historial, setHistorial] = useState(null);
   const [fecha, setFecha] = useState("");
   const [loading, setLoading] = useState(true);
 
@@ -14,8 +14,10 @@ const TablaHistoricoPaciente = ({ data }) => {
   useEffect(() => {
     setFecha(new Date().toISOString().split("T")[0]);
   }, []);
+  console.log(data);
 
   useEffect(() => {
+    setHistorial(null);
     try {
       const consultarApi = async () => {
         const url = `http://localhost:4000/api/paciente/buscar-historial/${data._id}`;
@@ -33,6 +35,7 @@ const TablaHistoricoPaciente = ({ data }) => {
       console.log(error);
     }
   }, [fecha]);
+  console.log(historial);
 
   return (
     <>
