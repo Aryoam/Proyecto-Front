@@ -8,7 +8,7 @@ const Select = ({ opciones, selected, setSelected }) => {
     <div className="">
       <Listbox value={selected} onChange={setSelected}>
         <div className="relative mt-1">
-          <Listbox.Button className=" relative w-full p-2.5 text-left bg-white rounded-lg shadow-md cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm shadow-sm sm:text-sm border-[1px] border-gray-200 rounded-md p-2.5">
+          <Listbox.Button className="disabledSelect relative w-full p-2.5 text-left bg-white rounded-lg shadow-md cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm shadow-sm sm:text-sm border-[1px] border-gray-200 rounded-md p-2.5">
             <span className="block truncate">{selected.opcion}</span>
             <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
               <SelectorIcon

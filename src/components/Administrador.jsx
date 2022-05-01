@@ -10,8 +10,6 @@ const Administrador = () => {
   const { paciente } = usePaciente();
   const [selected, setSelected] = useState(paciente[0]);
 
-  console.log(paciente.length);
-
   return (
     <>
       {paciente.length ? (

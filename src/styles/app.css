@@ -59,3 +59,7 @@
 .alinearSelectGrafico {
   text-align: -webkit-right;
 }
+
+.disabled .disabledSelect {
+  background-color: #fafafa;
+}

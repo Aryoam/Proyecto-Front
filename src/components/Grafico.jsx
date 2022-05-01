@@ -32,8 +32,22 @@ const Grafico = ({ data }) => {
       title: {
         text: "Temperatura (°C)",
       },
-      min: 35,
-      max: 40,
+      min:
+        busqueda.db === "temperatura"
+          ? 35
+          : busqueda.db === "cardiaca"
+          ? 60
+          : busqueda.db === "respiratoria"
+          ? 0
+          : null,
+      max:
+        busqueda.db === "temperatura"
+          ? 40
+          : busqueda.db === "cardiaca"
+          ? 120
+          : busqueda.db === "respiratoria"
+          ? 60
+          : null,
     },
     plotOptions: {
       line: {

@@ -12,6 +12,7 @@ const data = [
 ];
 
 export default function SelectGraficos({ selected, setSelected }) {
+
   return (
     <div className="alinearSelectGrafico">
       <Listbox value={selected} onChange={setSelected}>

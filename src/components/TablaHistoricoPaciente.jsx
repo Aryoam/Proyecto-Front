@@ -79,7 +79,7 @@ const TablaHistoricoPaciente = ({ data }) => {
                     />
                   </div>
 
-                  <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                  <div className="col-span-6 sm:col-span-3 lg:col-span-2 disabled">
                     <label className="block text-sm font-medium text-gray-700">
                       Higiene
                     </label>
@@ -168,7 +168,7 @@ const TablaHistoricoPaciente = ({ data }) => {
                     />
                   </div>
 
-                  <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                  <div className="col-span-6 sm:col-span-3 lg:col-span-2 disabled">
                     <label className="block text-sm font-medium text-gray-700">
                       WC
                     </label>
