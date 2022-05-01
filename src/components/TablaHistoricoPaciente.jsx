@@ -14,7 +14,6 @@ const TablaHistoricoPaciente = ({ data }) => {
   useEffect(() => {
     setFecha(new Date().toISOString().split("T")[0]);
   }, []);
-  console.log(data);
 
   useEffect(() => {
     setHistorial(null);
@@ -35,7 +34,6 @@ const TablaHistoricoPaciente = ({ data }) => {
       console.log(error);
     }
   }, [fecha]);
-  console.log(historial);
 
   return (
     <>

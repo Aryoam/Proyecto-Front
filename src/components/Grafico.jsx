@@ -14,7 +14,8 @@ const options = {
   ],
 };
 
-const Grafico = () => {
+const Grafico = ({ data }) => {
+  console.log(data);
   return <HighchartsReact highcharts={Highcharts} options={options} />;
 };
 

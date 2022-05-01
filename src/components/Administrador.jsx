@@ -15,13 +15,13 @@ const Administrador = () => {
   return (
     <>
       {paciente.length ? (
-        <div className=" p-3 sm:p-12 containerLayout sm:grid sm:grid-cols-[1fr_2fr] grid-admin xl:px-20">
+        <div className=" p-3 sm:p-12 containerLayout sm:grid sm:grid-cols-[1fr_2fr] grid-admin sm:gap-x-10 xl:px-20">
           <div>
-            <div className="relative mt-24 drop-shadow-[-5px_0px_10px_rgba(178,228,255,.4)] bg-white rounded-xl sm:w-96">
+            <div className="relative mt-24 drop-shadow-[-5px_0px_10px_rgba(178,228,255,.4)] bg-white rounded-xl sm:min-w-96">
               <img
                 src={autenticado.foto}
                 alt="Foto del enfermero"
-                className="rounded-xl absolute -top-24 left-0 right-0 m-auto w-64 shadow-md"
+                className="rounded-xl absolute -top-24 left-0 right-0 m-auto w-64 max-h-64 shadow-md"
               />
               <div className="pt-44 p-5">
                 <div className="flex items-center mb-3 justify-center">
@@ -102,8 +102,24 @@ const Administrador = () => {
             </div>
           </div>
           <Modal data={selected} />
-          <div className="sm:text-4xl text-center">
-            <h1>Bienvenido {autenticado.nombre}</h1>
+          <div>
+            <h1 className="sm:text-4xl text-center">
+              Bienvenido {autenticado.nombre}
+            </h1>
+            <div className="grid grid-cols-2 gap-2.5 mt-[56px] gridAdministrador">
+              <div className="drop-shadow-[-5px_0px_10px_rgba(178,228,255,.4)] bg-white rounded-xl p-2.5 max-h-[149px]">
+                1
+              </div>
+              <div className="drop-shadow-[-5px_0px_10px_rgba(178,228,255,.4)] bg-white rounded-xl p-2.5 max-h-[149px]">
+                2
+              </div>
+              <div className="drop-shadow-[-5px_0px_10px_rgba(178,228,255,.4)] bg-white rounded-xl p-2.5 max-h-[149px]">
+                3
+              </div>
+              <div className="drop-shadow-[-5px_0px_10px_rgba(178,228,255,.4)] bg-white rounded-xl p-2.5 max-h-[149px]">
+                4
+              </div>
+            </div>
           </div>
         </div>
       ) : (

@@ -50,3 +50,8 @@
 .containerFechaHistorico {
   text-align: right;
 }
+
+.gridAdministrador {
+  height: calc(100% - 115px);
+  max-height: 308px;
+}

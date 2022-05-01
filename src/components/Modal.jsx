@@ -54,7 +54,7 @@ export default function Modal({ data }) {
                       <img
                         src={data.foto}
                         alt="Foto del enfermero"
-                        className="rounded-xl absolute -top-24 left-0 right-0 m-auto w-64 shadow-md"
+                        className="rounded-xl absolute -top-24 left-0 right-0 m-auto w-64 shadow-md max-h-64 "
                       />
                       <div className="pt-44 p-5">
                         <div className="flex items-center mb-3 justify-center">

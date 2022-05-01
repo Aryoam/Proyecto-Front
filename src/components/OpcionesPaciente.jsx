@@ -22,7 +22,7 @@ export default function OpcionesPaciente({ data }) {
     ],
     Estadisticas: [
       {
-        componente: <Grafico />,
+        componente: <Grafico data={data} />,
       },
     ],
   });
