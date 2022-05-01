@@ -55,3 +55,7 @@
   height: calc(100% - 115px);
   max-height: 308px;
 }
+
+.alinearSelectGrafico {
+  text-align: -webkit-right;
+}
