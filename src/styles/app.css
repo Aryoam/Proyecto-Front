@@ -23,7 +23,7 @@
   }
 
   .grid-admin {
-    grid-template-rows: calc(50vh - 50px) calc(50vh - 50px);
+    grid-template-rows: calc(40vh - 50px) calc(60vh - 50px);
   }
 
   .cont-pacientes {
@@ -31,11 +31,14 @@
   }
 
   .cont-pacientes-scroll {
-    height: calc(50vh - 74px);
+    height: calc(60vh - 74px);
   }
 
   .cont-pacientes-scroll::-webkit-scrollbar {
     display: none;
+  }
+  .boxAdmin {
+    height: calc(100% - 8rem);
   }
 }
 

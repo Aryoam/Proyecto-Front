@@ -10,29 +10,82 @@ const Administrador = () => {
   const { paciente } = usePaciente();
   const [selected, setSelected] = useState(paciente[0]);
 
+  const meses = [
+    "enero",
+    "febrero",
+    "marzo",
+    "abril",
+    "mayo",
+    "junio",
+    "julio",
+    "agosto",
+    "septiembre",
+    "octubre",
+    "noviembre",
+    "diciembre",
+  ];
+
+  const diasSemana = [
+    "Domingo",
+    "Lunes",
+    "martes",
+    "Miércoles",
+    "Jueves",
+    "Viernes",
+    "Sábado",
+  ];
+
+  const newDate = new Date();
+  const hoy =
+    diasSemana[newDate.getDay()] +
+    ", " +
+    newDate.getDate() +
+    " de " +
+    meses[newDate.getMonth()] +
+    " de " +
+    newDate.getUTCFullYear();
+
+  console.log(hoy);
+
   return (
     <>
       {paciente.length ? (
         <div className=" p-3 sm:p-12 containerLayout sm:grid sm:grid-cols-[1fr_2fr] grid-admin sm:gap-x-10 xl:px-20">
-          <div>
-            <div className="relative mt-24 drop-shadow-[-5px_0px_10px_rgba(178,228,255,.4)] bg-white rounded-xl sm:min-w-96">
+          <div className="col-span-2">
+            <div className="relative mt-24 shadowPersonalizado bg-white rounded-xl sm:min-w-96 boxAdmin">
               <img
                 src={autenticado.foto}
                 alt="Foto del enfermero"
-                className="rounded-xl absolute -top-24 left-0 right-0 m-auto w-64 max-h-64 shadow-md"
+                className="rounded-xl absolute -top-24 sm:-top-[68px] left-0 sm:left-auto sm:mr-3
+                 right-0 m-auto w-64 max-h-64 shadowPersonalizado"
               />
-              <div className="pt-44 p-5">
-                <div className="flex items-center mb-3 justify-center">
-                  <p className="m-0 text-xl">{autenticado.nombre}</p>
-                </div>
+              <div className="pt-44 sm:pt-5  p-5">
                 <div className="flex items-center mb-3">
+                  <p className="m-0 text-lg">{hoy}</p>
+                </div>
+                <div className="text-lg sm:text-3xl">
+                  <p className="text-sky-400">
+                    Bienvenido Dr.{" "}
+                    <span className="text-blue-700">{autenticado.nombre}</span>
+                  </p>
+                </div>
+                <div className="">
+                  <p className="">
+                    Tienes{" "}
+                    <span className="text-blue-700 font-bold">
+                      {paciente.length}
+                    </span>{" "}
+                    asignados para hoy
+                  </p>
+                </div>
+                {/* <div className="flex items-center mb-3">
                   <AiFillPhone className="mr-2 text-2xl color-secundario" />
                   <p className="m-0">{autenticado.telefono}</p>
                 </div>
                 <div className="flex items-center mb-3">
                   <AiOutlineMail className="mr-2 text-2xl color-secundario" />
                   <p className="m-0">{autenticado.email}</p>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -52,14 +105,8 @@ const Administrador = () => {
                         key={key}
                         value={paciente}
                         className={({ active, checked }) =>
-                          `${
-                            active
-                              ? "ring-2 ring-offset-2 ring-offset-sky-300 ring-white ring-opacity-60"
-                              : ""
-                          }
-                  ${
-                    checked ? "bg-sky-900 bg-opacity-75 text-white" : "bg-white"
-                  }
+                          `
+                  ${checked ? "bg-sky-400 text-white" : "bg-white"}
                     relative rounded-lg shadow-md px-5 py-4 cursor-pointer flex `
                         }
                       >
@@ -100,21 +147,18 @@ const Administrador = () => {
             </div>
           </div>
           <Modal data={selected} />
-          <div>
-            <h1 className="sm:text-4xl text-center">
-              Bienvenido {autenticado.nombre}
-            </h1>
+          <div className="row-[2/3]">
             <div className="grid grid-cols-2 gap-2.5 mt-[56px] gridAdministrador">
-              <div className="drop-shadow-[-5px_0px_10px_rgba(178,228,255,.4)] bg-white rounded-xl p-2.5 max-h-[149px]">
+              <div className="shadowPersonalizado bg-white rounded-xl p-2.5 max-h-[149px]">
                 1
               </div>
-              <div className="drop-shadow-[-5px_0px_10px_rgba(178,228,255,.4)] bg-white rounded-xl p-2.5 max-h-[149px]">
+              <div className="shadowPersonalizado bg-white rounded-xl p-2.5 max-h-[149px]">
                 2
               </div>
-              <div className="drop-shadow-[-5px_0px_10px_rgba(178,228,255,.4)] bg-white rounded-xl p-2.5 max-h-[149px]">
+              <div className="shadowPersonalizado bg-white rounded-xl p-2.5 max-h-[149px]">
                 3
               </div>
-              <div className="drop-shadow-[-5px_0px_10px_rgba(178,228,255,.4)] bg-white rounded-xl p-2.5 max-h-[149px]">
+              <div className="shadowPersonalizado bg-white rounded-xl p-2.5 max-h-[149px]">
                 4
               </div>
             </div>
