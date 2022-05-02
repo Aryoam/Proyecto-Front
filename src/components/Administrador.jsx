@@ -73,7 +73,7 @@ const Administrador = () => {
                   <p className="">
                     Tienes{" "}
                     <span className="text-blue-700 font-bold">
-                      {paciente.length}
+                      {paciente.length} pacientes
                     </span>{" "}
                     asignados para hoy
                   </p>
@@ -105,8 +105,7 @@ const Administrador = () => {
                         key={key}
                         value={paciente}
                         className={({ active, checked }) =>
-                          `
-                  ${checked ? "bg-sky-400 text-white" : "bg-white"}
+                          `${checked ? "bg-sky-400 text-white" : "bg-white"}
                     relative rounded-lg shadow-md px-5 py-4 cursor-pointer flex `
                         }
                       >
