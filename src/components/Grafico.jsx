@@ -11,7 +11,55 @@ const Grafico = ({ data }) => {
     tipo: "Temperatura",
     db: "temperatura",
   });
+  let rango = [];
+  let lineas = [];
+  if (busqueda.db === "temperatura") {
+    rango = [
+      { color: "#F1C40E", value: 37 },
+      { color: "#16a34a", value: 38 },
+      { color: "#F52D46" },
+    ];
+    lineas = [
+      {
+        color: "#FF0000",
+        width: 2,
+        dashStyle: "shortdash",
+        value: 38,
+      },
+      {
+        color: "#22c55e",
+        width: 2,
+        dashStyle: "shortdash",
+        value: 37,
+      },
+    ];
+  } else if (busqueda.db === "cardiaca") {
+    rango = [
+      { color: "#F1C40E", value: 60 },
+      { color: "#16a34a", value: 80 },
+      { color: "#F52D46" },
+    ];
+    lineas = [
+      {
+        color: "#FF0000",
+        width: 2,
+        dashStyle: "shortdash",
+        value: 80,
+      },
+      {
+        color: "#22c55e",
+        width: 2,
+        dashStyle: "shortdash",
+        value: 90,
+      },
+    ];
+  }
   const options = {
+    chart: {
+      height: 500,
+      type: "line",
+    },
+
     title: {
       text: `Historico de ${data.nombre}`,
     },
@@ -21,8 +69,9 @@ const Grafico = ({ data }) => {
     },
     series: [
       {
-        name: "Día",
+        name: "Outlier score",
         data: valores,
+        zones: rango,
       },
     ],
     xAxis: {
@@ -32,6 +81,7 @@ const Grafico = ({ data }) => {
       title: {
         text: "Temperatura (°C)",
       },
+      plotLines: lineas,
       min:
         busqueda.db === "temperatura"
           ? 35
@@ -48,14 +98,6 @@ const Grafico = ({ data }) => {
           : busqueda.db === "respiratoria"
           ? 60
           : null,
-    },
-    plotOptions: {
-      line: {
-        dataLabels: {
-          enabled: true,
-        },
-        enableMouseTracking: false,
-      },
     },
   };
 
