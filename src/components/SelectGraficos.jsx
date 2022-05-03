@@ -9,10 +9,10 @@ const data = [
   { tipo: "Saturación de oxígeno", db: "oxigeno" },
   { tipo: "Presión arterial", db: "arterial" },
   { tipo: "Actitud", db: "actitud" },
+  { tipo: "Comparar", db: "comparar" },
 ];
 
 export default function SelectGraficos({ selected, setSelected }) {
-
   return (
     <div className="alinearSelectGrafico">
       <Listbox value={selected} onChange={setSelected}>
@@ -32,7 +32,7 @@ export default function SelectGraficos({ selected, setSelected }) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="text-left focus:outline-none absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 sm:text-sm z-[99]">
+            <Listbox.Options className="text-left focus:outline-none absolute mt-1 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 sm:text-sm z-[99]">
               {data.map((datos, datosIdx) => (
                 <Listbox.Option
                   key={datosIdx}
