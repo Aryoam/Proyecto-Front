@@ -144,21 +144,6 @@ const TablaConstantesPaciente = ({ data }) => {
           toast.success("Actualizado", {
             duration: 2000,
           });
-
-          // const urlPaciente = `http://localhost:4000/api/paciente/editar/${data._id}`;
-          // const parametros = {
-          //   method: "PUT",
-          //   headers: {
-          //     "Content-Type": "application/json",
-          //   },
-          //   body: JSON.stringify({
-          //     historial: [...data.historial, resultado.msg._id],
-          //   }),
-          // };
-
-          // const respuestaPaciente = await fetch(urlPaciente, parametros);
-          // const resultadoPaciente = await respuestaPaciente.json();
-          // console.log(data);
         };
 
         consultarApi();

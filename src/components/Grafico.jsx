@@ -220,6 +220,12 @@ const Grafico = ({ data }) => {
       height: 500,
       type: "line",
     },
+    navigator: {
+      series: {
+        color: "#FF00FF",
+        lineWidth: 2,
+      },
+    },
     plotOptions: {
       series: {
         lineWidth: 1,
@@ -230,11 +236,17 @@ const Grafico = ({ data }) => {
     },
 
     subtitle: {
-      text: "Temperatura",
+      text: `${busqueda.tipo}`,
     },
     series: serie,
+    showInNavigator: true,
     xAxis: {
       categories: fecha,
+      crosshair: {
+        width: 1,
+        color: "black",
+        dashStyle: "shortdash",
+      },
     },
     yAxis: {
       title: {

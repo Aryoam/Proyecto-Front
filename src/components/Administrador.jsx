@@ -4,31 +4,38 @@ import usePaciente from "../hooks/usePaciente";
 import { RadioGroup } from "@headlessui/react";
 import Modal from "./Modal";
 import { AiFillPhone, AiOutlineMail } from "react-icons/ai";
+import { BsFillPersonPlusFill } from "react-icons/bs";
+import RegistrarPaciente from "./RegistrarPaciente";
+import Alertas from "./Alertas";
 
 const Administrador = () => {
-  const { autenticado, handleModalPacientesAdmin } = useAutenticado();
+  const {
+    autenticado,
+    handleModalPacientesAdmin,
+    handleModalRegistrarPaciente,
+  } = useAutenticado();
   const { paciente } = usePaciente();
   const [selected, setSelected] = useState(paciente[0]);
 
   const meses = [
-    "enero",
-    "febrero",
-    "marzo",
-    "abril",
-    "mayo",
-    "junio",
-    "julio",
-    "agosto",
-    "septiembre",
-    "octubre",
-    "noviembre",
-    "diciembre",
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre",
   ];
 
   const diasSemana = [
     "Domingo",
     "Lunes",
-    "martes",
+    "Martes",
     "Miércoles",
     "Jueves",
     "Viernes",
@@ -78,19 +85,11 @@ const Administrador = () => {
                     asignados para hoy
                   </p>
                 </div>
-                {/* <div className="flex items-center mb-3">
-                  <AiFillPhone className="mr-2 text-2xl color-secundario" />
-                  <p className="m-0">{autenticado.telefono}</p>
-                </div>
-                <div className="flex items-center mb-3">
-                  <AiOutlineMail className="mr-2 text-2xl color-secundario" />
-                  <p className="m-0">{autenticado.email}</p>
-                </div> */}
               </div>
             </div>
           </div>
           <div className="cont-pacientes">
-            <h4>Pacientes</h4>
+            <h4 className="my-5 sm:my-0 text-center sm:text-left">Pacientes</h4>
 
             <div className="w-full py-1 cont-pacientes-scroll overflow-scroll">
               <div className="w-full  mx-auto">
@@ -146,13 +145,18 @@ const Administrador = () => {
             </div>
           </div>
           <Modal data={selected} />
-          <div className="row-[2/3]">
+          <div className=" hidden sm:block row-[2/3]">
             <div className="grid grid-cols-2 gap-2.5 mt-[56px] gridAdministrador">
-              <div className="shadowPersonalizado bg-white rounded-xl p-2.5 max-h-[149px]">
-                1
+              <div
+                className="shadowPersonalizado bg-white rounded-xl p-2.5 max-h-[149px] flex items-center hover:cursor-pointer"
+                onClick={handleModalRegistrarPaciente}
+              >
+                <BsFillPersonPlusFill className="text-sky-500 text-5xl mr-5" />
+                Registrar Paciente
+                <RegistrarPaciente />
               </div>
               <div className="shadowPersonalizado bg-white rounded-xl p-2.5 max-h-[149px]">
-                2
+                <Alertas />
               </div>
               <div className="shadowPersonalizado bg-white rounded-xl p-2.5 max-h-[149px]">
                 3

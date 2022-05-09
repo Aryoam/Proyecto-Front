@@ -7,6 +7,8 @@ const AutenticadoProvider = ({ children }) => {
   const [autenticado, setAutenticado] = useState({});
   const [loading, setLoading] = useState(true);
   const [modalPacientesAdmin, setModalPacientesAdmin] = useState(false);
+  const [modalRegistrarPaciente, setmodalRegistrarPaciente] = useState(false);
+  console.log(modalRegistrarPaciente);
 
   const navigate = useNavigate();
 
@@ -46,6 +48,10 @@ const AutenticadoProvider = ({ children }) => {
     setModalPacientesAdmin(!modalPacientesAdmin);
   };
 
+  const handleModalRegistrarPaciente = () => {
+    setmodalRegistrarPaciente(!modalRegistrarPaciente);
+  };
+
   return (
     <AutenticacionContext.Provider
       value={{
@@ -54,6 +60,8 @@ const AutenticadoProvider = ({ children }) => {
         loading,
         handleModalPacientesAdmin,
         modalPacientesAdmin,
+        modalRegistrarPaciente,
+        handleModalRegistrarPaciente,
       }}
     >
       {children}
