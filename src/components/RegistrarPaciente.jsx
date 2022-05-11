@@ -4,10 +4,13 @@ import useAutenticado from "../hooks/useAutenticado";
 import SelectEnfermero from "./SelectEnfermero";
 import toast, { Toaster } from "react-hot-toast";
 import FileUploader from "./SubirImagen";
+import usePaciente from "../hooks/usePaciente";
 
 export default function RegistrarPaciente({ data }) {
   const { handleModalRegistrarPaciente, modalRegistrarPaciente, autenticado } =
     useAutenticado();
+
+  const { handleNuevoPaciente } = usePaciente();
 
   const [nombre, setNombre] = useState(null);
   const [edad, setEdad] = useState(null);
@@ -15,7 +18,7 @@ export default function RegistrarPaciente({ data }) {
   const [peso, setPeso] = useState(null);
   const [telefono, setTelefono] = useState(null);
   const [habitacion, setHabitacion] = useState(null);
-  const [foto, setFoto] = useState(null);
+  // const [foto, setFoto] = useState(null);
   const [patologia, setPatologia] = useState(null);
   const [enfermero, setEnfermero] = useState(null);
   const [name, setName] = useState("");
@@ -36,7 +39,7 @@ export default function RegistrarPaciente({ data }) {
         peso: peso,
         telefono: telefono,
         habitacion: habitacion,
-        foto: foto,
+        // foto: foto,
         patologia: patologia,
         enfermero: enfermero,
       }),
@@ -45,6 +48,8 @@ export default function RegistrarPaciente({ data }) {
     const respuesta = await fetch(url, requestOptions);
     const resultado = await respuesta.json();
     console.log(resultado);
+    handleModalRegistrarPaciente();
+    handleNuevoPaciente();
   };
 
   return (
@@ -84,7 +89,7 @@ export default function RegistrarPaciente({ data }) {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <div className="inline-block w-full max-w-6xl  p-2 sm:p-6 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl alturaModal overflow-scroll">
+              <div className="inline-block w-full max-w-6xl  p-2 sm:p-6 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl overflow-scroll">
                 <div>
                   <Toaster position="top-center" reverseOrder={false} />
                   <div className="mt-5 md:mt-0 md:col-span-2">
@@ -164,7 +169,7 @@ export default function RegistrarPaciente({ data }) {
                               />
                             </div>
 
-                            <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+                            {/* <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                               <label className="block text-sm font-medium text-gray-700">
                                 Foto
                               </label>
@@ -174,7 +179,7 @@ export default function RegistrarPaciente({ data }) {
                                 className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-[1px] border-gray-200 rounded-md p-2.5"
                                 onChange={(e) => setFoto(e.target.value)}
                               />
-                            </div>
+                            </div> */}
 
                             <div className="col-span-6 sm:col-span-3 lg:col-span-2">
                               <label className="block text-sm font-medium text-gray-700">
@@ -193,10 +198,9 @@ export default function RegistrarPaciente({ data }) {
                                 Enfermero
                               </label>
                               <SelectEnfermero data={data} />
-                              24
                             </div>
 
-                            <div>
+                            <div className="col-span-6">
                               <label className="block text-sm font-medium text-gray-700">
                                 Foto
                               </label>
@@ -221,7 +225,6 @@ export default function RegistrarPaciente({ data }) {
                                       htmlFor="file-upload"
                                       className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
                                     >
-                                      <span>Cargar la foto</span>
                                       <FileUploader
                                         onFileSelectSuccess={(file) =>
                                           setSelectedFile(file)
@@ -237,14 +240,6 @@ export default function RegistrarPaciente({ data }) {
                                   </div>
                                 </div>
                               </div>
-                            </div>
-                            <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                              <button
-                                type="submit"
-                                className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                              >
-                                Guardar
-                              </button>
                             </div>
                           </div>
                         </div>

@@ -4,6 +4,7 @@ const PacienteContext = createContext();
 
 const PacienteProvider = ({ children }) => {
   const [paciente, setPaciente] = useState({});
+  const [nuevoPaciente, setNuevoPaciente] = useState(false);
 
   useEffect(() => {
     const pacientesAPI = async () => {
@@ -32,10 +33,14 @@ const PacienteProvider = ({ children }) => {
     };
 
     pacientesAPI();
-  }, []);
+  }, [nuevoPaciente]);
+
+  const handleNuevoPaciente = () => {
+    setNuevoPaciente(!nuevoPaciente);
+  };
 
   return (
-    <PacienteContext.Provider value={{ paciente }}>
+    <PacienteContext.Provider value={{ paciente, handleNuevoPaciente }}>
       {children}
     </PacienteContext.Provider>
   );

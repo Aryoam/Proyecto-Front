@@ -1,13 +1,22 @@
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
+import { useNavigate } from "react-router-dom";
 import { BsMenuButton, BsFillPersonPlusFill } from "react-icons/bs";
 import useAutenticado from "../hooks/useAutenticado";
 import RegistrarPaciente from "./RegistrarPaciente";
+import { BiLogOut } from "react-icons/bi";
 
 export default function MenuMovil() {
   const [open, setOpen] = useState(false);
   const { handleModalRegistrarPaciente } = useAutenticado();
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    return navigate("/login");
+  };
 
   return (
     <>
@@ -67,33 +76,27 @@ export default function MenuMovil() {
                       </div>
                       <div className="relative mt-6 flex-1 px-4 sm:px-6">
                         {/* ///// */}
-                        <div className="grid  gap-2.5 mt-[56px] ">
-                          <div
+                        <div className="grid  gap-2.5 ">
+                          {/* <div
                             className="shadowPersonalizado bg-white rounded-xl p-2.5 max-h-[149px] flex items-center hover:cursor-pointer z-50"
                             onClick={handleModalRegistrarPaciente}
                           >
                             <BsFillPersonPlusFill className="text-sky-500 text-5xl mr-5" />
                             Registrar Paciente
                             <RegistrarPaciente />
-                          </div>
-                          <div className="shadowPersonalizado bg-white rounded-xl p-2.5 max-h-[149px]">
-                            2
-                          </div>
-                          <div className="shadowPersonalizado bg-white rounded-xl p-2.5 max-h-[149px]">
-                            3
-                          </div>
-                          <div className="shadowPersonalizado bg-white rounded-xl p-2.5 max-h-[149px]">
-                            4
+                          </div> */}
+                          <div
+                            className="shadowPersonalizado bg-white rounded-xl p-2.5 max-h-[149px] flex items-center hover:cursor-pointer z-50"
+                            onClick={handleLogout}
+                          >
+                            <BiLogOut className="text-sky-500 text-5xl mr-5" />
+                            Salir
                           </div>
                         </div>
                         {/* /////// */}
                         <div className="absolute inset-0 px-4 sm:px-6">
-                          <div
-                            className="h-full border-2 border-dashed border-gray-200"
-                            aria-hidden="true"
-                          />
+                          <div className="h-full" aria-hidden="true" />
                         </div>
-                        sdfsdfd
                       </div>
                     </div>
                   </div>

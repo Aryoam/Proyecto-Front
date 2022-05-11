@@ -1,12 +1,15 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import useAutenticado from "../hooks/useAutenticado";
 import usePaciente from "../hooks/usePaciente";
 import { RadioGroup } from "@headlessui/react";
 import Modal from "./Modal";
 import { AiFillPhone, AiOutlineMail } from "react-icons/ai";
-import { BsFillPersonPlusFill } from "react-icons/bs";
+import { BsFillPersonPlusFill, BsFillCalendar2WeekFill } from "react-icons/bs";
 import RegistrarPaciente from "./RegistrarPaciente";
 import Alertas from "./Alertas";
+import { RiAlarmWarningLine } from "react-icons/ri";
+import Enfermero from "./Enfermero";
 
 const Administrador = () => {
   const {
@@ -16,6 +19,12 @@ const Administrador = () => {
   } = useAutenticado();
   const { paciente } = usePaciente();
   const [selected, setSelected] = useState(paciente[0]);
+
+  const navigate = useNavigate();
+
+  const handlePacientes = () => {
+    return navigate("/enfermero");
+  };
 
   const meses = [
     "Enero",
@@ -155,15 +164,18 @@ const Administrador = () => {
                 Registrar Paciente
                 <RegistrarPaciente />
               </div>
-              <div className="shadowPersonalizado bg-white rounded-xl p-2.5 max-h-[149px]">
+              <div className="shadowPersonalizado bg-white rounded-xl p-2.5 max-h-[149px] flex items-center hover:cursor-pointer">
+                <RiAlarmWarningLine className="text-red-500 text-5xl mr-5" />
                 <Alertas />
               </div>
-              <div className="shadowPersonalizado bg-white rounded-xl p-2.5 max-h-[149px]">
-                3
+              <div
+                className="shadowPersonalizado bg-white rounded-xl p-2.5 max-h-[149px] flex items-center hover:cursor-pointer"
+                onClick={handlePacientes}
+              >
+                <BsFillCalendar2WeekFill className="text-sky-500 text-5xl mr-5" />
+                Agenda
               </div>
-              <div className="shadowPersonalizado bg-white rounded-xl p-2.5 max-h-[149px]">
-                4
-              </div>
+              <div className="shadowPersonalizado bg-white rounded-xl p-2.5 max-h-[149px]"></div>
             </div>
           </div>
         </div>
